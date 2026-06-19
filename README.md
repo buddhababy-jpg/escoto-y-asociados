@@ -26,3 +26,9 @@ V5 updates:
 - Changed the homepage hero photos to two group/team photos from the supplied gallery.
 - Centered the methodology heading section.
 - Adjusted hero visual alignment.
+
+
+V6 deploy fix:
+- Fixes the blank hero issue caused when animation JavaScript is missing or not running.
+- Website content is now visible by default.
+- Scroll animations still work when script.js loads correctly.

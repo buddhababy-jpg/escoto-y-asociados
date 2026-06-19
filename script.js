@@ -1,3 +1,4 @@
+document.documentElement.classList.add('js');
 
 const navToggle = document.querySelector('.nav-toggle');
 const mainNav = document.querySelector('.main-nav');
@@ -8,10 +9,14 @@ if (navToggle && mainNav) {
   });
 }
 const revealEls = document.querySelectorAll('.reveal, .card, .process-step, .photo-frame, .gallery-item');
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); } });
-}, {threshold:.12});
-revealEls.forEach(el => io.observe(el));
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); } });
+  }, {threshold:.12});
+  revealEls.forEach(el => io.observe(el));
+} else {
+  revealEls.forEach(el => el.classList.add('in'));
+}
 
 document.querySelectorAll('[data-count]').forEach(el => {
   let done = false;
